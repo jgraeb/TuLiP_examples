@@ -1,3 +1,11 @@
+#
+# Same example as singlelane.py, but using TuLiP gridworld
+# Gridworld is saved in singlelane.txt
+# -----------------------------------------
+# |  init |       |       |       |  goal |
+# -----------------------------------------
+#
+
 from __future__ import print_function
 
 import sys

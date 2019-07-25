@@ -1,3 +1,10 @@
+#
+# TuLiP example of a car driving along a single lane
+# -----------------------------------------
+# |  init |       |       |       |  goal |
+# -----------------------------------------
+#
+
 from __future__ import print_function
 
 import logging
@@ -27,28 +34,27 @@ sys.transitions.add_comb({'X4'}, {'X3','X4'})
 # Add atomic propositions to the states
 sys.atomic_propositions.add_from({'init', 'goal'})
 sys.states.add('X0', ap={'init'})
-#sys.states.add('X2', ap={'signal'})
 sys.states.add('X4', ap={'goal'})
 
 
 # @environ_section@
-env_vars = {}#'red','green'}
-env_init = {}#'red'}                # empty set
-env_prog = {}#'red','green'}
-env_safe = {}#'((red && !green) || (green && !red))'}              # empty set
+env_vars = set()               # empty set
+env_init = set()               # empty set
+env_prog = set()               # empty set
+env_safe = set()               # empty set
 
 # System specification
 #
 # The system specification is that the car should drive to the goal
 #
-#     []<> goal && []((X2 && red) -> stay in state X2)
+#     []<> goal 
 
 # @specs_setup_section@
 # Augment the system description to make it GR(1)
-sys_vars = {}#'X0reach'}          # infer the rest from TS
-sys_init = {}#'X0reach'}          # initialized as true
+sys_vars = set()        # infer the rest from TS
+sys_init = set()          # initialized as true
 sys_prog = {'goal'}             # []<>goal
-sys_safe = {'goal -> X(goal)'}#'X(X0reach)<->signal||(X0reach && !red)'}
+sys_safe = {'goal -> X(goal)'}
 #sys_prog |= {}#'X0reach'}
 
 # Create the specification
