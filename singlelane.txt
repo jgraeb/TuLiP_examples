@@ -1,3 +1,6 @@
+#
+# Description of the Grid World for a single lane
+#
 #   0 1 2 3 4 
 # ------------
 # 0| | | | | |
