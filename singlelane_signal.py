@@ -58,9 +58,8 @@ env_safe = set()#{'((red && !green) || (green && !red))'}        # never green a
 sys_vars = set()#{'X0reach'}          # infer the rest from TS
 sys_init = set()#{'X0reach'}          # initialized as true
 sys_prog = {'goal'}             # []<>goal
-sys_safe = {'((signal && red)->X(signal)) && (goal -> X(goal))'}#'X(X0reach)<->signal||(X0reach && !red)'}
+sys_safe = {'((signal && red)->X(signal)) && (goal -> X(goal))'}
 #sys_prog |= {'X0reach'}
-#sys_safe = {'(X (X0reach) <-> signal) || (X0reach && !red) && (goal -> X(goal))'}#'X(X0reach)<->signal||(X0reach && !red)'}
 
 
 # Create the specification
@@ -84,3 +83,6 @@ assert ctrl is not None, 'unrealizable'
 if not ctrl.save('singlelane_signal.png'):
     print(ctrl)
 # @plot_print_end@
+
+# appended as in documentation chapter 6
+dumpsmach.write_python_case("singlelane_signal_fsm.py", ctrl, classname="ExampleFSM")
