@@ -30,7 +30,7 @@ logging.getLogger('tulip.interfaces.omega').setLevel(logging.WARNING)
 sys = transys.FTS()
 
 # Define the states of the system
-sys.states.add_from(['X1', 'X2', 'X3', 'X4','X5','X6','X7','X8','X9', 'X10'])
+sys.states.add_from(['X1', 'X2', 'X3', 'X4','X5','X6','X7','X8','X9'])
 sys.states.initial.add('X1')    # start in state X0
 
 # Define the allowable transitions

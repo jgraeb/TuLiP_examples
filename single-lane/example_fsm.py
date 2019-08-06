@@ -9,5 +9,5 @@ from singlelane_signal_fsm import ExampleFSM
 M = ExampleFSM()
 print('In order, the input variables: '+', '.join(M.input_vars))
 for i in range(5):
-    input_values = {"red": 0}
+    input_values = {"red": 1}
     print(M.move(**input_values))

@@ -16,16 +16,17 @@ env_prog = '!red'
 env_safe = set()                # empty set
 #lane[0,0] = 'init'
 #lane[0,5] = 'goal'
-lane.atomic_propositions.add_from({'init', 'goal'})
-lane.states.add(lane[0,0], ap={'init'})
+lane.atomic_propositions.add_from({'signal', 'goal'})
+#lane.states.add(lane[0,0], ap={'init'})
+lane.states.add(lane[0,2], ap={'signal'})
 lane.states.add(lane[0,5], ap={'goal'})
 
 # specs
-sys_vars = {'X0reach'}          # infer the rest from TS
-sys_init = {'X0reach'}
+sys_vars = set()#'X0reach'}          # infer the rest from TS
+sys_init = set()#{'X0reach'}
 sys_prog = {'goal'}             # []<>Goal
-sys_safe = {'(X (X0reach) <-> init) || (X0reach && !red)'}
-sys_prog |= {'X0reach'}
+sys_safe = {'((signal && red)->X(signal)) && (goal -> X(goal))'}
+#sys_prog |= {'X0reach'}
 # @specs_setup_section_end@
 
 # synthesis and plot result
